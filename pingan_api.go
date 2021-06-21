@@ -88,3 +88,43 @@ func (a *App) CommonTransferRechargeQuery(params interface{}) (*pkg.CommonTransf
 	err := a.Execute(serverId, params, &output)
 	return output, err
 }
+
+//KFEJZB6103	查询对账文件信息
+func (a *App) ReconciliationDocumentQuery(params interface{}) (*pkg.ReconciliationDocumentQuery, error) {
+	serverId = "ReconciliationDocumentQuery"
+	var output = &pkg.ReconciliationDocumentQuery{}
+	err := a.Execute(serverId, params, &output)
+	return output, err
+}
+
+//KFEJZB6011	查询资金汇总账户余额
+func (a *App) SupAcctIdBalanceQuery(params interface{}) (*pkg.SupAcctIdBalanceQuery, error) {
+	serverId = "SupAcctIdBalanceQuery"
+	var output = &pkg.SupAcctIdBalanceQuery{}
+	err := a.Execute(serverId, params, &output)
+	return output, err
+}
+
+//KFEJZB6092	根据会员代码查询会员子账号
+func (a *App) QueryCustAcctIdByThirdCustId(params interface{}) (*pkg.QueryCustAcctIdByThirdCustId, error) {
+	serverId = "QueryCustAcctIdByThirdCustId"
+	var output = &pkg.QueryCustAcctIdByThirdCustId{}
+	err := a.Execute(serverId, params, &output)
+	return output, err
+}
+
+//KFEJZB6093	查询会员子账号余额
+func (a *App) QueryCustAcctIdBalance(params interface{}) (*pkg.QueryCustAcctIdBalance, error) {
+	serverId = "QueryCustAcctIdBalance"
+	var output = &pkg.QueryCustAcctIdBalance{}
+	err := a.Execute(serverId, params, &output)
+	return output, err
+}
+
+//KFEJZB6037	查询会员子账号
+func (a *App) QueryCustAcctId(params interface{}) (*pkg.QueryCustAcctId, error) {
+	serverId = "QueryCustAcctId"
+	var output = &pkg.QueryCustAcctId{}
+	err := a.Execute(serverId, params, &output)
+	return output, err
+}

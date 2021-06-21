@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"github.com/gomodule/redigo/redis"
 	"github.com/z-vip/pingan_sdk"
-	"pingan_sdk/pkg"
+	"github.com/z-vip/pingan_sdk/pkg"
 	"time"
 )
 
@@ -92,4 +92,11 @@ func main() {
 	res2, err := app.CheckMsgCodeWithCorp(arg2)
 	fmt.Println(err, ";;;;;", res2)
 
+	//余额
+	var arg3 = pkg.ArgsQueryCustAcctId{
+		FundSummaryAcctNo: app.FundSummaryAcctNo,
+		TranNetMemberCode: fmt.Sprintf("Z%014d", userId),
+	}
+	res3, err := app.QueryCustAcctId(arg3)
+	fmt.Println(err, ";;;;;", res3)
 }

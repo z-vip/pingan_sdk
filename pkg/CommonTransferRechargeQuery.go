@@ -17,14 +17,14 @@ type ArgsCommonTransferRechargeQuery struct {
 */
 type CommonTransferRechargeQuery struct {
 	BaseResp
-	ResultNum     string     `json:"ResultNum" description:"本次交易返回查询结果记录数"`
-	StartRecordNo string     `json:"StartRecordNo" description:"起始记录号"`
-	EndFlag       string     `json:"EndFlag" description:"结束标志"`
-	TotalNum      string     `json:"TotalNum" description:"符合业务查询条件的记录总数"`
-	TranItemArray []TranItem `json:"TranItemArray" description:"交易信息数组"`
+	ResultNum     string                            `json:"ResultNum" description:"本次交易返回查询结果记录数"`
+	StartRecordNo string                            `json:"StartRecordNo" description:"起始记录号"`
+	EndFlag       string                            `json:"EndFlag" description:"结束标志"`
+	TotalNum      string                            `json:"TotalNum" description:"符合业务查询条件的记录总数"`
+	TranItemArray []CommonTransferRechargeQueryItem `json:"TranItemArray" description:"交易信息数组"`
 }
 
-type TranItem struct {
+type CommonTransferRechargeQueryItem struct {
 	InAcctType        string `json:"InAcctType" description:"入账类型"`
 	TranNetMemberCode string `json:"TranNetMemberCode" description:"交易网会员代码"`
 	SubAcctNo         string `json:"SubAcctNo" description:"见证子帐户的帐号"`
