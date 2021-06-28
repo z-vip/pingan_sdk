@@ -1,7 +1,18 @@
 package pkg
 
+const (
+	FileTypeCZ  = "CZ"  //充值文件-CZ
+	FileTypeTX  = "TX"  //提现文件
+	FileTypeJY  = "JY"  //交易文件
+	FileTypeYE  = "YE"  //余额文件
+	FileTypeHY  = "HY"  //合约文件
+	FileTypeJQ  = "JQ"  //鉴权文件
+	FileTypePOS = "POS" //POS文件
+	FileTypeJG  = "JG"  //资金汇总账户明细文件
+)
+
 /**
-请求参数
+  请求参数
 */
 type ArgsReconciliationDocumentQuery struct {
 	FundSummaryAcctNo string `json:"FundSummaryAcctNo" description:"资金汇总账号" required:"Y"`
@@ -11,7 +22,7 @@ type ArgsReconciliationDocumentQuery struct {
 }
 
 /*
-返回数据
+   返回数据
 */
 type ReconciliationDocumentQuery struct {
 	BaseResp

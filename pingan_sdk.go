@@ -349,7 +349,7 @@ func (a *App) Execute(serverId string, params interface{}, output interface{}) (
 	_ = json.Unmarshal(body, &respBase)
 	//处理接口基本信息
 	if respBase.TxnReturnCode != "000000" {
-		return fmt.Errorf("(%s)[%s]%s", respBase.CnsmrSeqNo, respBase.TxnReturnCode, respBase.TxnReturnMsg)
+		return fmt.Errorf("[%s](%s)%s", respBase.CnsmrSeqNo, respBase.TxnReturnCode, respBase.TxnReturnMsg)
 	}
 	if output == nil {
 		//如果不需要定义输出对象，直接使用base

@@ -46,6 +46,7 @@ func String2Interface(str string, args ...string) (value interface{}) {
 		return str
 	}
 	kind := strings.ToLower(args[0])
+
 	switch kind {
 	case "string":
 		if len(args) > 1 && args[1] != "" {

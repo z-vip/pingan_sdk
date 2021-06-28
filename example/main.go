@@ -9,6 +9,9 @@ import (
 )
 
 func main() {
+	var str = "1234567890"
+	fmt.Println(str[3 : len(str)-1])
+
 	conf := pingan_sdk.Config{
 		"app_id":               "d908fb6b-1e7e-45cf-b720-0f5c4b98589a",
 		"app_type":             "PKCS12",
@@ -43,9 +46,11 @@ func main() {
 	}
 	//fmt.Println(myRedis)
 	app, err := pingan_sdk.NewApp(conf, myRedis)
-
+	fmt.Println(app, err)
 	//6000 开户
 	var userId = 2005
+	fmt.Println("UserId:", userId)
+
 	//var params = pingan_sdk.Params{
 	//	"FunctionFlag":      "1",
 	//	"FundSummaryAcctNo": "15000099027617",
@@ -82,7 +87,7 @@ func main() {
 	fmt.Println(err, ";;;;;", res1)*/
 
 	//6239
-	var arg2 = pkg.ArgsCheckMsgCodeWithCorp{
+	/*var arg2 = pkg.ArgsCheckMsgCodeWithCorp{
 		FundSummaryAcctNo: app.FundSummaryAcctNo,
 		SubAcctNo:         "3620000000151087",
 		TranNetMemberCode: fmt.Sprintf("Z%014d", userId),
@@ -90,13 +95,24 @@ func main() {
 		MessageCheckCode:  "1234",
 	}
 	res2, err := app.CheckMsgCodeWithCorp(arg2)
-	fmt.Println(err, ";;;;;", res2)
+	fmt.Println(err, ";;;;;", res2)*/
 
 	//余额
-	var arg3 = pkg.ArgsQueryCustAcctId{
+	/*var arg3 = pkg.ArgsQueryCustAcctId{
 		FundSummaryAcctNo: app.FundSummaryAcctNo,
 		TranNetMemberCode: fmt.Sprintf("Z%014d", userId),
 	}
 	res3, err := app.QueryCustAcctId(arg3)
-	fmt.Println(err, ";;;;;", res3)
+	fmt.Println(err, ";;;;;", res3)*/
+
+	//对账
+
+	var arg4 = pkg.ArgsReconciliationDocumentQuery{
+		FundSummaryAcctNo: app.FundSummaryAcctNo,
+		FileType:          pkg.FileTypeCZ,
+		FileDate:          time.Now().AddDate(0, 0, -1).Format("20060102"),
+	}
+	res4, err := app.ReconciliationDocumentQuery(arg4)
+	fmt.Println(arg4, "=", err, "----", res4)
+
 }
