@@ -46,7 +46,7 @@ func main() {
 	}
 	//fmt.Println(myRedis)
 	app, err := pingan_sdk.NewApp(conf, myRedis)
-	fmt.Println(app, err)
+	//fmt.Println("@@", app, err)
 	//6000 开户
 	var userId = 2005
 	fmt.Println("UserId:", userId)

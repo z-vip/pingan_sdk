@@ -34,13 +34,13 @@ type Result struct {
 
 //app基础信息（配置信息）
 type AppBase struct {
-	AppId             string `json:"app_id" description:"应用ID" required:"true"`
-	AppType           string `json:"app_type" description:"应用类型" required:"true"`
-	PrivateKeyPath    string `json:"private_key_path" description:"私钥地址" required:"true"`
-	PrivateKeyPwd     string `json:"private_key_pwd" description:"私钥密码" required:"true"`
-	PublicKeyPath     string `json:"public_key_path" description:"公钥地址" required:"true"`
-	PublicUrl         string `json:"public_url" description:"公共地址" required:"true"`
-	ApiUrl            string `json:"api_url" description:"API地址" required:"true"`
+	AppId             string `json:"app_id" description:"应用ID" required:"Y"`
+	AppType           string `json:"app_type" description:"应用类型" required:"Y"`
+	PrivateKeyPath    string `json:"private_key_path" description:"私钥地址" required:"Y"`
+	PrivateKeyPwd     string `json:"private_key_pwd" description:"私钥密码" required:"Y"`
+	PublicKeyPath     string `json:"public_key_path" description:"公钥地址" required:"Y"`
+	PublicUrl         string `json:"public_url" description:"公共地址" required:"Y"`
+	ApiUrl            string `json:"api_url" description:"API地址" required:"Y"`
 	ApiVersion        string `json:"app_version" description:"版本号" required:"N"`
 	Ecif              string `json:"ecif" description:"ECIF号" required:"true"`
 	FundSummaryAcctNo string `json:"fund_summary_acct_no" description:"资金汇总账号" required:"N"`
@@ -64,19 +64,17 @@ type App struct {
 */
 func (a *App) AppInit() error {
 	//检查配置是否定义
-	v := reflect.ValueOf(a).Elem()
+	b := &a.AppBase
+	v := reflect.ValueOf(b).Elem()
 	for i := 0; i < v.NumField(); i++ {
 		//非必要项不检查
-		if required := v.Type().Field(i).Tag.Get("required"); required == "false" || required == "N" {
+		if required := v.Type().Field(i).Tag.Get("required"); required != "Y" && required != "true" {
 			continue
 		}
 		fieldTag := v.Type().Field(i).Tag.Get("description")
 		if fieldValue := fmt.Sprintf("%v", v.Field(i)); fieldValue == "" {
 			return errors.New(fieldTag + "未定义")
 		}
-	}
-	if a.ApiVersion == "" {
-		a.ApiVersion = Version
 	}
 	//处理私钥证书
 	bytes, err := ioutil.ReadFile(a.PrivateKeyPath)
@@ -107,6 +105,10 @@ func (a *App) AppInit() error {
 	//fmt.Println("------------", reflect.TypeOf(cert.PublicKey).String())
 	a.PublicKey = cert.PublicKey.(*rsa.PublicKey)
 	//fmt.Println(util.JsonEncode(a.PublicCert), "++++", util.JsonEncode(a.PublicKey))
+
+	if a.ApiVersion == "" {
+		a.ApiVersion = Version
+	}
 	return nil
 }
 

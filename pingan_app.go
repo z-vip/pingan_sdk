@@ -1,7 +1,6 @@
 package pingan_sdk
 
 import (
-	"fmt"
 	"github.com/gomodule/redigo/redis"
 	"github.com/z-vip/pingan_sdk/util"
 	"reflect"
@@ -25,7 +24,6 @@ func NewApp(config interface{}, args ...interface{}) (*App, error) {
 	//定义redis"
 	if len(args) > 0 && reflect.TypeOf(args[0]).String() == "*redis.Pool" {
 		app.Redis = args[0].(*redis.Pool)
-		fmt.Println("==自定义redis==", app.Redis)
 	} else {
 		//默认本机redis
 		app.Redis = &redis.Pool{
