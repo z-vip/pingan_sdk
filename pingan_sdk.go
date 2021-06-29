@@ -43,9 +43,10 @@ type AppBase struct {
 	ApiUrl            string `json:"api_url" description:"API地址" required:"true"`
 	ApiVersion        string `json:"app_version" description:"版本号" required:"N"`
 	Ecif              string `json:"ecif" description:"ECIF号" required:"true"`
+	FundSummaryAcctNo string `json:"fund_summary_acct_no" description:"资金汇总账号" required:"N"`
 	MrchCode          string `json:"mrch_code" description:"商户号" required:"N"`
 	UserMinName       string `json:"user_min_name" description:"用户短号" required:"N"`
-	FundSummaryAcctNo string `json:"fund_summary_acct_no" description:"资金汇总账号" required:"N"`
+	UserPwd           string `json:"UserPwd" description:"用有密码" required:"N"`
 }
 
 type App struct {

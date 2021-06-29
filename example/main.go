@@ -20,11 +20,11 @@ func main() {
 		"public_key_path":      "../cert/publickey.cer",
 		"private_key_path":     "../cert/2000908886@39.pfx",
 		"private_key_pwd":      "1",
-		"user_min_name":        "X67917",
-		"password":             "${3DES}SHgd2RIwB2BFSPzkaES3Hg=",
-		"mrch_code":            "3620",
 		"ecif":                 "620104260170",
 		"fund_summary_acct_no": "15000099027617",
+		"user_min_name":        "X67917",
+		"user_pwd":             "${3DES}SHgd2RIwB2BFSPzkaES3Hg=",
+		"mrch_code":            "3620",
 	}
 
 	var myRedis = &redis.Pool{
