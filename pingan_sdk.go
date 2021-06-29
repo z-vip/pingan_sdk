@@ -315,6 +315,11 @@ func (a *App) Request(uri string, params Params) ([]byte, error) {
 请求API接口
 */
 func (a *App) Execute(serverId string, params interface{}, output interface{}) (err error) {
+	//获取token
+	err = a.GetToken()
+	if err != nil {
+		return
+	}
 	//公共参数
 	var baseArgs = pkg.BaseArgs{
 		ApiVersionNo:   a.ApiVersion,
