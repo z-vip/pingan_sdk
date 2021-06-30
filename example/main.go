@@ -13,18 +13,18 @@ func main() {
 	fmt.Println(str[3 : len(str)-1])
 
 	conf := pingan_sdk.Config{
-		"app_id":               "d908fb6b-1e7e-45cf-b720-0f5c4b98589a",
-		"app_type":             "PKCS12",
-		"api_url":              "https://my-st1.orangebank.com.cn:567/api/group",
-		"public_url":           "https://my-st1.orangebank.com.cn:567/api/approveDev",
-		"public_key_path":      "../cert/publickey.cer",
-		"private_key_path":     "../cert/2000908886@39.pfx",
-		"private_key_pwd":      "1",
-		"ecif":                 "620104260170",
-		"fund_summary_acct_no": "15000099027617",
-		"user_min_name":        "X67917",
-		"user_pwd":             "${3DES}SHgd2RIwB2BFSPzkaES3Hg=",
-		"mrch_code":            "3620",
+		"app_id":               "",
+		"app_type":             "",
+		"api_url":              "",
+		"public_url":           "",
+		"public_key_path":      "",
+		"private_key_path":     "",
+		"private_key_pwd":      "",
+		"ecif":                 "",
+		"fund_summary_acct_no": "",
+		"user_min_name":        "",
+		"user_pwd":             "",
+		"mrch_code":            "",
 	}
 
 	var myRedis = &redis.Pool{
