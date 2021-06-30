@@ -1,4 +1,4 @@
-package pkg
+package pingan_pkg
 
 const (
 	FileTypeCZ  = "CZ"  //充值文件-CZ

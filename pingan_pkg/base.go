@@ -1,4 +1,4 @@
-package pkg
+package pingan_pkg
 
 type BaseArgs struct {
 	ApiVersionNo   string `json:"ApiVersionNo" description:"API版本号"`

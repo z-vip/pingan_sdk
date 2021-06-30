@@ -12,7 +12,7 @@ import (
 	"errors"
 	"fmt"
 	"github.com/gomodule/redigo/redis"
-	"github.com/z-vip/pingan_sdk/pkg"
+	"github.com/z-vip/pingan_sdk/pingan_pkg"
 	"github.com/z-vip/pingan_sdk/util"
 	"golang.org/x/crypto/pkcs12"
 	"io/ioutil"
@@ -42,9 +42,9 @@ type AppBase struct {
 	PublicUrl         string `json:"public_url" description:"公共地址" required:"Y"`
 	ApiUrl            string `json:"api_url" description:"API地址" required:"Y"`
 	ApiVersion        string `json:"app_version" description:"版本号" required:"N"`
-	Ecif              string `json:"ecif" description:"ECIF号" required:"true"`
-	FundSummaryAcctNo string `json:"fund_summary_acct_no" description:"资金汇总账号" required:"N"`
-	MrchCode          string `json:"mrch_code" description:"商户号" required:"N"`
+	Ecif              string `json:"ecif" description:"ECIF号" required:"Y"`
+	FundSummaryAcctNo string `json:"fund_summary_acct_no" description:"资金汇总账号" required:"Y"`
+	MrchCode          string `json:"mrch_code" description:"商户号" required:"Y"`
 	UserMinName       string `json:"user_min_name" description:"用户短号" required:"N"`
 	UserPwd           string `json:"UserPwd" description:"用有密码" required:"N"`
 }
@@ -323,7 +323,7 @@ func (a *App) Execute(serverId string, params interface{}, output interface{}) (
 		return
 	}
 	//公共参数
-	var baseArgs = pkg.BaseArgs{
+	var baseArgs = pingan_pkg.BaseArgs{
 		ApiVersionNo:   a.ApiVersion,
 		AppAccessToken: a.AccessToken,
 		ApplicationID:  a.AppId,
@@ -353,7 +353,7 @@ func (a *App) Execute(serverId string, params interface{}, output interface{}) (
 	if err != nil {
 		return
 	}
-	var respBase pkg.BaseResp
+	var respBase pingan_pkg.BaseResp
 	_ = json.Unmarshal(body, &respBase)
 	//处理接口基本信息
 	if respBase.TxnReturnCode != "000000" {

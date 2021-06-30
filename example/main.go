@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"github.com/gomodule/redigo/redis"
 	"github.com/z-vip/pingan_sdk"
-	"github.com/z-vip/pingan_sdk/pkg"
+	"github.com/z-vip/pingan_sdk/pingan_pkg"
 	"time"
 )
 
@@ -58,7 +58,7 @@ func main() {
 	//	"TranNetMemberCode": fmt.Sprintf("Z%014d", userId),
 	//}
 	//fmt.Println(params)
-	/*var args = pkg.ArgsOpenCustAcctId{
+	/*var args = pingan_pkg.ArgsOpenCustAcctId{
 		FunctionFlag:      "1",
 		FundSummaryAcctNo: app.FundSummaryAcctNo,
 		MemberProperty:    "SH",
@@ -69,7 +69,7 @@ func main() {
 	fmt.Println(err, ";;;;;", res)*/
 
 	//6238 绑卡
-	/*var args1 = pkg.ArgsBindUnionPayWithCheckCorp{
+	/*var args1 = pingan_pkg.ArgsBindUnionPayWithCheckCorp{
 		FundSummaryAcctNo:  app.FundSummaryAcctNo,
 		SubAcctNo:          "3620000000151087",
 		TranNetMemberCode:  "Z00000000002005",
@@ -87,7 +87,7 @@ func main() {
 	fmt.Println(err, ";;;;;", res1)*/
 
 	//6239
-	/*var arg2 = pkg.ArgsCheckMsgCodeWithCorp{
+	/*var arg2 = pingan_pkg.ArgsCheckMsgCodeWithCorp{
 		FundSummaryAcctNo: app.FundSummaryAcctNo,
 		SubAcctNo:         "3620000000151087",
 		TranNetMemberCode: fmt.Sprintf("Z%014d", userId),
@@ -98,7 +98,7 @@ func main() {
 	fmt.Println(err, ";;;;;", res2)*/
 
 	//余额
-	/*var arg3 = pkg.ArgsQueryCustAcctId{
+	/*var arg3 = pingan_pkg.ArgsQueryCustAcctId{
 		FundSummaryAcctNo: app.FundSummaryAcctNo,
 		TranNetMemberCode: fmt.Sprintf("Z%014d", userId),
 	}
@@ -107,9 +107,9 @@ func main() {
 
 	//对账
 
-	var arg4 = pkg.ArgsReconciliationDocumentQuery{
+	var arg4 = pingan_pkg.ArgsReconciliationDocumentQuery{
 		FundSummaryAcctNo: app.FundSummaryAcctNo,
-		FileType:          pkg.FileTypeCZ,
+		FileType:          pingan_pkg.FileTypeCZ,
 		FileDate:          time.Now().AddDate(0, 0, -1).Format("20060102"),
 	}
 	res4, err := app.ReconciliationDocumentQuery(arg4)

@@ -1,4 +1,4 @@
-package pkg
+package pingan_pkg
 
 const (
 	MemberPropertyDefault  = "00"

@@ -1,4 +1,4 @@
-package pkg
+package pingan_pkg
 
 /**
 请求参数
